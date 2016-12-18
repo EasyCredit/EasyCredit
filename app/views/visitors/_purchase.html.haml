@@ -1,0 +1,19 @@
+%br/
+%a.btn.btn-primary{"data-target" => "#purchaseModal", "data-toggle" => "modal", :href => "#"} Purchase
+#purchaseModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "purchaseModal", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-sm
+    .modal-content
+      .authform
+        = form_for(User.new, :url => {:controller=>'registrations', :action => 'pay'}, :html => { :role => 'form'}) do |f|
+          %h3 Sign Up &amp; Purchase
+          .form-group
+            = f.label :email
+            = f.email_field :email, :autofocus => true, class: 'form-control'
+          .form-group
+            = f.label :password
+            = f.password_field :password, class: 'form-control'
+          .form-group
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, class: 'form-control'
+          = f.submit '1. Sign up', :class => 'button left'
+          = f.submit '2. Pay with Card', :class => 'button', :disabled => 'disabled'

@@ -1,0 +1,18 @@
+%h3 Welcome
+- if user_signed_in?
+  - if current_user.admin?
+    %h3 Admin
+    %p
+      = link_to 'User count:', users_path
+      = User.count
+  - else
+    %h3 Download the book.
+    = link_to 'Download PDF', products_path('product.pdf'), :class => 'btn btn-success btn-large'
+- else
+  %h3 Purchase the book.
+  %article
+    %label.amount
+      = image_tag 'rubyonrails.png', size: '60x60'
+      %div= Rails.application.secrets.product_title
+      %span= number_to_currency(Rails.application.secrets.product_price.to_f/100)
+    = render :partial => 'purchase'

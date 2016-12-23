@@ -1,0 +1,12 @@
+%br
+%br
+%br
+= link_to 'Edit credit', edit_credit_path(@credit)
+%h1= @credit.name
+%p= @credit.description
+
+%p Month count:
+= @credit.month_count
+
+%p Credit rate
+= @credit.credit_rate

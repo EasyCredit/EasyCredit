@@ -1,54 +1,17 @@
-- if @user.email.blank? || !resource.errors.empty?
-  - flash.now[:alert] = 'Your card was NOT charged.' if !resource.errors.empty?
-  .authform
-    = form_for(@user, :url => {:controller=>'registrations', :action => 'pay'}, :html => { :role => 'form'}) do |f|
-      %h3 Sign Up &amp; Purchase
-      = devise_error_messages!
-      .form-group
-        = f.label :name
-        = f.text_field :name, class: 'form-control'
-      .form-group
-        = f.label :name
-        = f.text_field :name, class: 'form-control'
-      .form-group
-        = f.label :name
-        = f.text_field :name, :autofocus => true, class: 'form-control'
-      .form-group
-        = f.label :email
-        = f.email_field :email, class: 'form-control'
-      .form-group
-        = f.label :password
-        = f.password_field :password, class: 'form-control'
-      .form-group
-        = f.label :password_confirmation
-        = f.password_field :password_confirmation, class: 'form-control'
-      = f.submit '1. Sign up', :class => 'button left'
-      = f.submit '2. Pay with Card', :class => 'button' , :disabled => 'disabled'
-- else
-  .authform
-    = form_for(@user, :url => registration_path(@user), :html => { :role => 'form'}) do |f|
-      %h3 Pay with Card
-      = devise_error_messages!
-      .form-group
-        = f.label :name
-        = f.text_field :name, class: 'form-control'
-      .form-group
-        = f.label :name
-        = f.text_field :name, class: 'form-control'
-      .form-group
-        = f.label :name
-        = f.text_field :name, :autofocus => true, class: 'form-control'
-      .form-group
-        = f.label :email
-        = f.email_field :email, class: 'form-control', disabled: 'true'
-      = f.hidden_field :password
-      = f.hidden_field :password_confirmation
-      .form-group
-        %label{:for => "password"} Password
-        %input#password.form-control{:disabled => "disabled", :placeholder => "hidden", :type => "text"}/
-      .form-group
-        %label{:for => "password_confirmation"} Password confirmation
-        %input#password_confirmation.form-control{:disabled => "disabled", :placeholder => "hidden", :type => "text"}/
-      = f.submit '1. Sign up', :class => 'button left', :disabled => 'disabled'
-      %script.stripe-button{"data-amount" => "#{Rails.application.secrets.product_price}", "data-description" => "#{Rails.application.secrets.product_title}", "data-email" => "#{@user.email}", "data-key" => "#{Rails.application.secrets.stripe_publishable_key}", "data-label" => "2. Pay with Card", :src => "https://checkout.stripe.com/v2/checkout.js"}
-        :cdata
+.authform
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f|
+    %h3 Sign up
+    = devise_error_messages!
+    .form-group
+      = f.label :name
+      = f.text_field :name, :autofocus => true, class: 'form-control'
+    .form-group
+      = f.label :email
+      = f.email_field :email, class: 'form-control'
+    .form-group
+      = f.label :password
+      = f.password_field :password, class: 'form-control'
+    .form-group
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, class: 'form-control'
+    = f.submit 'Sign up', :class => 'button right'

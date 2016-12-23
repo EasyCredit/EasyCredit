@@ -8,6 +8,20 @@
         %span.icon-bar
         %span.icon-bar
       = link_to 'Home', root_path, class: 'navbar-brand'
+
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to "About", "/pages/about"
+        %li
+          = link_to "Credits", credits_path
+        %li
+          = link_to "Contact", "/pages/contact"
+        %li
+          - if user_signed_in?
+            = link_to "Log out", destroy_user_session_path
+          -  else
+            = link_to "Log in", new_user_session_path
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         = render 'layouts/navigation_links'

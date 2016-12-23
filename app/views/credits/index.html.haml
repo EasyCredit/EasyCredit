@@ -1,0 +1,16 @@
+- content_for :title do
+  Credits
+
+.container
+  .row
+    .col-md-4
+      %h3 Create new Credit
+      %p= link_to "New Credit", new_credit_path
+  .row
+    .col-md-8
+      %h1.page-header
+        Credits
+        %small Take it easy!
+      - @credits.each do |credit|
+        %h2= link_to h(credit.name), credit
+        %p= credit.description

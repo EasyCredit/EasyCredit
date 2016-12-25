@@ -1,4 +1,5 @@
 class CreditsController < ApplicationController
+  before_action :check_rights, only: [:new, :edit, :destroy]
   def index
     @credits = Credit.all
   end
@@ -49,5 +50,11 @@ class CreditsController < ApplicationController
 
   def credit_params
     params.require(:credit).permit(:name, :description, :month_count, :credit_rate, :payment_date)
+  end
+
+  def check_rights
+    unless current_user&.admin? || current_user&.manager?
+      render text: '403 - Forbidden.', status: '403'
+    end
   end
 end

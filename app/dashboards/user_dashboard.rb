@@ -45,6 +45,7 @@ class UserDashboard < Administrate::BaseDashboard
     :name,
     :email,
     :role,
+    :password,
     :encrypted_password,
     :reset_password_token,
     :reset_password_sent_at,

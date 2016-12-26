@@ -11,5 +11,5 @@
   = @credit.credit_rate
 
   %br
-  - if user_signed_in?
+  - if user_signed_in? && !current_user.admin? && !current_user.manager?
     = link_to "Make request", new_request_path

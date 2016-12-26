@@ -1,0 +1,9 @@
+
+%h1 Make a request for credit:
+
+= simple_form_for Request.new do |f|
+  .form-inputs
+    = f.input :credit_name, placeholder: 'Enter credit name'
+    = f.input :email, placeholder: 'Enter your email'
+  = f.button :submit, 'Make request'
+  

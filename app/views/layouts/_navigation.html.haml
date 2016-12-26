@@ -12,6 +12,11 @@
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right
         %li
+          - if user_signed_in? && (current_user.admin? || current_user.manager?)
+            = link_to "Administrate", admin_credits_path
+          - elsif user_signed_in?
+            = link_to "My Account", "/pages/profile"
+        %li
           = link_to "About", "/pages/about"
         %li
           = link_to "Credits", credits_path

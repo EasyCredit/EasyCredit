@@ -1,8 +1,5 @@
 #about_us
   %h3 My Account:
-  %p
-    Name: #{current_user.name}
-  %p
-    Email: #{current_user.email}
-  %p
-    My requests: #{current_user.requests.pluck(:credit_name, :status, :updated_at) }
+  %p= "Name: #{current_user.name}"
+  %p= "Email: #{current_user.email}"
+  %p= "My requests: #{current_user.requests.pluck(:credit_name, :status, :updated_at)}"

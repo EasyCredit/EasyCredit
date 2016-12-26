@@ -1,14 +1,12 @@
 %br
 %br
 #about_us
-  %h1= @credit.name
+  %h1= "Credit name: #{@credit.name}"
   %p= @credit.description
   
-  %p Month count:
-  = @credit.month_count
+  %p= "Month count: #{@credit.month_count}"
   
-  %p Credit rate
-  = @credit.credit_rate
+  %p= "Credit rate: #{@credit.credit_rate}%"
 
   %br
   - if user_signed_in? && !current_user.admin? && !current_user.manager?

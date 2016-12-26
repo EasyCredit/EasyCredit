@@ -43,17 +43,20 @@
           %hr.intro-divider/
           %ul.list-inline.intro-social-buttons
             %li
-              %a.btn.btn-default.btn-lg{:href => "#"}
+              .btn.btn-default.btn-lg
                 %i.fa.fa-thumbs-up.fa-fw
-                %span.network-name Rates
+                %span.network-name= link_to "Rates", credits_path
             %li
-              %a.btn.btn-default.btn-lg{:href => "#"}
+              .btn.btn-default.btn-lg
                 %i.fa.fa-user.fa-fw
-                %span.network-name Account
+                - if user_signed_in?
+                  %span.network-name= link_to "Account", "/pages/profile"
+                - else
+                  %span.network-name= link_to "Account", new_user_session_path
             %li
-              %a.btn.btn-default.btn-lg{:href => "#"}
+              .btn.btn-default.btn-lg
                 %i.fa.fa-arrows.fa-fw
-                %span.network-name Location
+                %span.network-name= link_to "Contact us", "/pages/contact"
   / /.container
 / /.intro-header
 / Page Content

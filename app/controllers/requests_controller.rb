@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :check_rights, only: [:edit, :destroy]
+  before_action :check_rights, only: [:new, :edit, :destroy]
   def index
     @requests = Request.all
   end

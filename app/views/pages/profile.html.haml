@@ -5,7 +5,7 @@
   %h3 My requests:
   - current_user.requests.each do |req|
     .col-md-4
-      - if req.status.eql? "active"
+      - if  req && req.status.eql? "active"
         = link_to request_path(req) do
           .panel.panel-info
             .panel-heading
@@ -18,7 +18,7 @@
             .panel-footer
               = "#{time_ago_in_words(req.updated_at)} ago"
       
-      - elsif req.status.eql? "approved"
+      - elsif req && req.status.eql? "approved"
         = link_to request_path(req) do
           .panel.panel-success
             .panel-heading
@@ -29,7 +29,7 @@
             .panel-footer
               = "#{time_ago_in_words(req.updated_at)} ago"
 
-      - else req.status.eql? "rejected"
+      - elsif req && req.status.eql? "rejected"
         = link_to request_path(req) do
           .panel.panel-danger
             .panel-heading
@@ -39,3 +39,5 @@
               = "Request status: #{req.status}"
             .panel-footer
               = "#{time_ago_in_words(req.updated_at)} ago"
+      - else
+        %p No requests yet :(

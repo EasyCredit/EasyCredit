@@ -10,7 +10,7 @@
           .panel.panel-info
             .panel-heading
               .panel-title
-                = "Credit name: #{req.credit_name}"
+                = "#{req.credit_name}"
                 - if current_user == req.user
                   = link_to 'Delete', request_path(req), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' }
             .panel-body
@@ -23,7 +23,7 @@
           .panel.panel-success
             .panel-heading
               .panel-title
-                %p= "Credit name: #{req.credit_name}"
+                %p= "#{req.credit_name}"
             .panel-body
               = "Request status: #{req.status}"
             .panel-footer
@@ -34,7 +34,7 @@
           .panel.panel-danger
             .panel-heading
               .panel-title
-                %p= "Credit name: #{req.credit_name}"
+                %p= "#{req.credit_name}"
             .panel-body
               = "Request status: #{req.status}"
             .panel-footer

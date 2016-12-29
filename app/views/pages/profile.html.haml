@@ -6,31 +6,36 @@
   - current_user.requests.each do |req|
     .col-md-4
       - if req.status.eql? "active"
-        .panel.panel-info
-          .panel-heading
-            .panel-title
-              %p= "Credit name: #{req.credit_name}"
-          .panel-body
-            = "Request status: #{req.status}"
-          .panel-footer
-            = "#{time_ago_in_words(req.updated_at)} ago"
+        = link_to request_path(req) do
+          .panel.panel-info
+            .panel-heading
+              .panel-title
+                = "Credit name: #{req.credit_name}"
+                - if current_user == req.user
+                  = link_to 'Delete', request_path(req), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' }
+            .panel-body
+              = "Request status: #{req.status}"
+            .panel-footer
+              = "#{time_ago_in_words(req.updated_at)} ago"
       
       - elsif req.status.eql? "approved"
-        .panel.panel-success
-          .panel-heading
-            .panel-title
-              %p= "Credit name: #{req.credit_name}"
-          .panel-body
-            = "Request status: #{req.status}"
-          .panel-footer
-            = "#{time_ago_in_words(req.updated_at)} ago"
+        = link_to request_path(req) do
+          .panel.panel-success
+            .panel-heading
+              .panel-title
+                %p= "Credit name: #{req.credit_name}"
+            .panel-body
+              = "Request status: #{req.status}"
+            .panel-footer
+              = "#{time_ago_in_words(req.updated_at)} ago"
 
       - else req.status.eql? "rejected"
-        .panel.panel-danger
-          .panel-heading
-            .panel-title
-              %p= "Credit name: #{req.credit_name}"
-          .panel-body
-            = "Request status: #{req.status}"
-          .panel-footer
-            = "#{time_ago_in_words(req.updated_at)} ago"
+        = link_to request_path(req) do
+          .panel.panel-danger
+            .panel-heading
+              .panel-title
+                %p= "Credit name: #{req.credit_name}"
+            .panel-body
+              = "Request status: #{req.status}"
+            .panel-footer
+              = "#{time_ago_in_words(req.updated_at)} ago"

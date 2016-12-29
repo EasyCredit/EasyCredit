@@ -6,4 +6,10 @@ class Request < ApplicationRecord
   def set_default_status
     self.status ||= :active
   end
+
+  validates :email, presence: true
+  validates :email, format: /@/
+  validates :status, presence: true
+  validates :credit_name, presence: true
+  validates :credit_name, length: { minimum: 10 }
 end

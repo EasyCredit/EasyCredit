@@ -42,7 +42,7 @@ class RequestsController < ApplicationController
   def destroy
     @request = Request.find(params[:id])
     @request.destroy
-    redirect_to requests_path, notice: 'Destroyed!'
+    redirect_to "/pages/profile", notice: 'Destroyed!'
   end
 
 
@@ -53,8 +53,8 @@ class RequestsController < ApplicationController
   end
 
   def check_rights
-    unless current_user&.admin? || current_user&.manager?
-      render text: '403 - Forbidden.', status: '403'
-    end
+    #unless current_user&.admin? || current_user&.manager?
+    #  render text: '403 - Forbidden.', status: '403'
+    #end
   end
 end

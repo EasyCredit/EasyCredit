@@ -17,4 +17,5 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :email, format: /@/
   validates :name, presence: true
+  validates :name, length: { minimum: 3, maximum: 30 }
 end

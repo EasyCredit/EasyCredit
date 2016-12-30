@@ -11,5 +11,5 @@ class Request < ApplicationRecord
   validates :email, format: /@/
   validates :status, presence: true
   validates :credit_name, presence: true
-  validates :credit_name, length: { minimum: 10 }
+  validates :credit_name, length: { minimum: 5, maximum: 100 }
 end

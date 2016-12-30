@@ -10,8 +10,8 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     email: Field::String,
+    password: Field::String.with_options(searchable: false),
     encrypted_password: Field::String,
-    password: Field::String,
     reset_password_token: Field::String,
     reset_password_sent_at: Field::DateTime,
     remember_created_at: Field::DateTime,
@@ -45,7 +45,6 @@ class UserDashboard < Administrate::BaseDashboard
     :name,
     :email,
     :role,
-    :password,
     :encrypted_password,
     :reset_password_token,
     :reset_password_sent_at,
@@ -65,8 +64,9 @@ class UserDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :email,
-    :password,
     :role,
+    :password,
+    :encrypted_password,
     :sign_in_count,
     :current_sign_in_at,
     :last_sign_in_at,

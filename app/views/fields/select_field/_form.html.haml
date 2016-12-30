@@ -1,0 +1,5 @@
+.field-unit__label
+  = f.label field.attribute
+.field-unit__field
+  = f.select(field.attribute) do
+    = options_for_select(field.associated_resource_options, field.selected_option)

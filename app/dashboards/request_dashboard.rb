@@ -11,7 +11,7 @@ class RequestDashboard < Administrate::BaseDashboard
     id: Field::Number,
     email: Field::String,
     credit_name: Field::String,
-    status: Field::String,
+    status: SelectField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze

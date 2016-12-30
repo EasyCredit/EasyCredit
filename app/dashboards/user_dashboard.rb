@@ -23,7 +23,7 @@ class UserDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     name: Field::String,
-    role: Field::String.with_options(searchable: false),
+    role: SelectRoleField,
   }.freeze
 
   # COLLECTION_ATTRIBUTES

@@ -1,0 +1,23 @@
+!!!
+%html
+  %body
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "NOODP", :name => "ROBOTS"}/
+    %meta{:content => "initial-scale=1", :name => "viewport"}/
+    %title
+      = content_for(:title)
+      | #{Rails.application.class.parent_name.titlecase}
+
+    
+    = render "stylesheet"
+    = csrf_meta_tags
+    .app-container
+      .sidebar
+        = link_to 'Home', root_path, class: 'navbar-brand'
+        = render "sidebar"
+      %main.main-content{:role => "main"}
+        = content_for(:search)
+        = render "flashes"
+        = yield
+    = render "javascript"
+
